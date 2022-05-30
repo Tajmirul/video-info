@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: theme('colors.primary');
+        --color-secondary: theme('colors.secondary');
+    }
+    body {
+        @apply text-gray-800;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-roboto font-medium text-gray-700;
+    }
+
+    /* remove arrow of number input */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        @apply appearance-none m-0;
+    }
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+    ::-webkit-scrollbar {
+        @apply w-2 h-1;
+    }
+    ::-webkit-scrollbar-track {
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ffffff55;
+        border-radius: 10px;
+    }
+    .container {
+        @apply mx-auto px-4;
+    }
+}
+@layer components {
+    .tagify__tag > div::before {
+        @apply bg-[#e5e5e5];
+    }
+    .loader {
+        @apply hidden;
+    }
+    .loader img {
+        @apply mx-auto;
+    }
+
+    .nice-form {
+        --input-padding-x: 22px;
+        --input-padding-y: 12px;
+
+        @apply text-[15px] bg-[#f1f1f1] rounded-md flex relative;
+    }
+    .nice-form__input {
+        @apply w-full py-[var(--input-padding-y)] px-[var(--input-padding-x)] bg-white rounded-md outline-none border-2;
+    }
+    .nice-form__input:hover,
+    .nice-form__input:focus {
+        @apply border-indigo-400;
+    }
+    .nice-form__input::placeholder {
+        @apply text-transparent;
+    }
+    .nice-form__prepend {
+        @apply bg-transparent text-[15px] pointer-events-none rounded-md text-inherit;
+        @apply absolute top-[var(--input-padding-y)] left-[var(--input-padding-x)] transition-all;
+    }
+    .nice-form__input + .nice-form__prepend {
+        /* @apply ; */
+    }
+    .nice-form__input:focus + .nice-form__prepend,
+    .nice-form__input:not(:placeholder-shown) + .nice-form__prepend {
+        @apply top-[0] left-[5px] font-medium scale-[.8] bg-white px-2 transform -translate-y-1/2;
+    }
+    .nice-form.error .nice-form__input {
+        @apply border-red-500;
+    }
+    .nice-form.error .nice-form__prepend {
+        @apply text-red-500;
+    }
+    .toggle-password {
+        @apply absolute right-[10px] top-[50%] transform translate-y-[-50%] left-auto z-[3] text-[20px] mt-[0] float-none;
+    }
+    
+    /* file input */
+    .file-upload {
+        @apply w-full p-2 aspect-[1/.56] rounded-md overflow-hidden relative border-2 border-dashed border-gray-300 hover:border-primary hover:brightness-90;
+    }
+    .file-upload__input {
+        @apply h-[calc(100%-16px)] w-[calc(100%-16px)] bg-white rounded-md outline-none border-2 absolute z-10 opacity-0 cursor-pointer;
+    }
+    .file-upload__preview {
+        @apply absolute h-[calc(100%-16px)] w-[calc(100%-16px)] object-cover;
+    }
+
+    /* input checkbox and radio */
+    .theme-checkbox {
+        --box-size: 20px;
+        @apply flex items-center relative cursor-pointer select-none mb-3;
+    }
+    .theme-checkbox__input {
+        @apply hidden;
+    }
+    .theme-checkbox__checkmark {
+        @apply h-[var(--box-size)] w-[var(--box-size)] relative bg-[#e2e2e2] rounded-md mr-2;
+    }
+    .theme-checkbox__checkmark:after {
+        content: '';
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        @apply absolute left-[50%] top-[42%] transform translate-y-[-50%] translate-x-[-50%] rotate-[45deg] w-2 h-3 hidden transition-all;
+    }
+    .theme-checkbox__text {
+        @apply text-[14px] md:text-[16px];
+        width: calc(100% - (var(--box-size) + 8px + 2px));
+    }
+
+    .theme-checkbox:hover .theme-checkbox__checkmark {
+        @apply bg-[#ccc];
+    }
+    .theme-checkbox__input:checked ~ .theme-checkbox__checkmark {
+        @apply bg-[#2196f3];
+    }
+    .theme-checkbox__input:checked ~ .theme-checkbox__checkmark:after {
+        @apply block;
+    }
+
+    /* buttons */
+    .button {
+        @apply bg-primary text-white font-medium py-2 px-4 rounded-lg text-sm md:text-base;
+    }
+    .button[disabled] {
+        @apply bg-gray-300;
+    }
+    .button--primary {
+    }
+    .button--secondary {
+    }
+
+    .error {
+        @apply text-red-500 text-center text-2xl;
+    }
+}
+@layer utilities {}

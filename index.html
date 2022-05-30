@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>youtube</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;700&display=swap">
+        <link rel="stylesheet" href="dist/css/all.min.css">
+        <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="dist/css/tailwind.css">
+</head>
+<body>
+    <div class="bg-gray-100 text-center py-10">
+        <div class="container">
+            <form action="post" class="max-w-[530px] mx-auto video-url-submit">
+                <h3 class="text-4xl mb-5">Enter Url To Import Video</h3>
+                <div class="flex">
+                    <div class="nice-form flex-grow">
+                        <input type="url" name="url" placeholder="Enter Url" class="nice-form__input rounded-r-none video-url" value="https://www.dailymotion.com/video/x8b7uwa">
+                        <label class="nice-form__prepend">Enter Url</label>
+                    </div>
+                    <button class="button rounded-l-none">Import Video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-10 !max-w-[1020px] mb-5">
+        <div class="loader"><img src="dist/img/loader.gif" alt=""></div>
+        <div class="error"></div>
+        <div class="output grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+            <div class="space-y-5">
+                <div class="nice-form">
+                    <input type="text" name="title" placeholder="Video Title" class="nice-form__input video-title">
+                    <label class="nice-form__prepend">Video Title</label>
+                </div>
+
+                <div class="nice-form">
+                    <textarea class="nice-form__input video-description" placeholder="Video Description" rows="7"></textarea>
+                    <label class="nice-form__prepend">Video Description</label>
+                </div>
+                <div class="nice-form">
+                    <input class="nice-form__input tags-input video-tags" value="">
+                    <label class="nice-form__prepend">Tags</label>
+                </div>
+            </div>
+            <div>
+                <div class="file-upload">
+                    <input type="file" accept="image/*" class="file-upload__input">
+                    <img src="dist/img/default-thumb.png" data-default="dist/img/default-thumb.png" alt="" class="file-upload__preview video-thumbnail">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <script src="dist/js/main.js"></script>
+    <script>
+        const VIDEO_INFO_SERVER = 'https://video-info.toinfinite.dev';
+    </script>
+</body>
+</html>
